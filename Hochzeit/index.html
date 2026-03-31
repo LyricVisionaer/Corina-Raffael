@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corina &amp; Raffael – 25. Juli 2026</title>
+  <style>
+    /* ── Grundlage ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:      #b8975a;
+      --gold-lt:   #d4b483;
+      --gold-bg:   #f9f4ec;
+      --cream:     #fffdf8;
+      --dark:      #2c2316;
+      --mid:       #6b5840;
+      --rose:      #c9857a;
+      --rose-lt:   #f0dbd8;
+      --font-serif: 'Georgia', 'Times New Roman', serif;
+      --font-sans:  'Segoe UI', Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── Navigation ────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255, 253, 248, 0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #e8dfc8;
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 1rem;
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a {
+      display: block;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+      background: var(--gold-bg);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--mid);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 760px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: rgba(255,253,248,0.98);
+        border-bottom: 1px solid #e8dfc8;
+        flex-direction: column;
+        padding: 1rem 1.5rem;
+        gap: 0.1rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 0.9rem; }
+    }
+
+    /* ── Hero ──────────────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 1.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(to bottom, rgba(44,35,22,0.52) 0%, rgba(44,35,22,0.25) 60%, rgba(249,244,236,1) 100%),
+        url('trixpaule-wedding-2822602_1920.jpg') center center / cover no-repeat;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .hero-ornament {
+      font-size: 2rem;
+      color: var(--gold-lt);
+      letter-spacing: 0.3em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .hero-names {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      color: #fff;
+      line-height: 1.1;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.45);
+      letter-spacing: 0.04em;
+    }
+    .hero-names span { color: var(--gold-lt); }
+    .hero-date {
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+    }
+    .hero-verse {
+      margin-top: 2rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-scroll {
+      margin-top: 3rem;
+      color: var(--gold-lt);
+      font-size: 1.8rem;
+      animation: bounce 2s infinite;
+      display: inline-block;
+      cursor: pointer;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(8px); }
+    }
+
+    /* ── Sections allgemein ────────────────────────────────────────────── */
+    section { padding: 80px 1.5rem; }
+    section:nth-child(even) { background: var(--gold-bg); }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold-lt);
+      padding-bottom: 2px;
+      margin-bottom: 0.6rem;
+    }
+    h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--dark);
+      margin-bottom: 1.8rem;
+      line-height: 1.2;
+    }
+    h2 .gold { color: var(--gold); }
+
+    .divider {
+      text-align: center;
+      color: var(--gold-lt);
+      font-size: 1.4rem;
+      letter-spacing: 0.4em;
+      margin: 2rem 0;
+    }
+
+    p { margin-bottom: 1rem; color: var(--mid); }
+    p:last-child { margin-bottom: 0; }
+
+    .verse-box {
+      border-left: 3px solid var(--gold);
+      background: var(--rose-lt);
+      border-radius: 0 8px 8px 0;
+      padding: 1.2rem 1.6rem;
+      margin: 2rem 0;
+    }
+    .verse-box q {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--dark);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .verse-box cite {
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Grosser Tag ───────────────────────────────────────────────────── */
+    .timeline {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+    .timeline-time {
+      text-align: right;
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--gold);
+      line-height: 1.2;
+      padding-top: 3px;
+    }
+    .timeline-time small {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      font-family: var(--font-sans);
+    }
+    .timeline-body {
+      border-left: 2px solid var(--gold-lt);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .timeline-body::before {
+      content: '';
+      position: absolute;
+      left: -6px; top: 8px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .timeline-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+    .timeline-body p { margin: 0; font-size: 0.95rem; }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .photo-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .photo-grid img:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+    }
+
+    /* ── Wegbeschreibungen ─────────────────────────────────────────────── */
+    .location-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+    .location-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid #ede4d4;
+    }
+    .location-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .location-card-body { padding: 1.4rem; }
+    .location-card-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .location-card-body address {
+      font-style: normal;
+      font-size: 0.9rem;
+      color: var(--mid);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background .2s, color .2s, box-shadow .2s;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: #fff;
+      border: 2px solid var(--gold);
+    }
+    .btn-gold:hover {
+      background: var(--dark);
+      border-color: var(--dark);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    .route-note {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-top: 1.8rem;
+      border: 1px solid #ede4d4;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .route-note h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+    .route-steps {
+      list-style: none;
+      counter-reset: steps;
+    }
+    .route-steps li {
+      counter-increment: steps;
+      padding: 0.5rem 0 0.5rem 2.2rem;
+      position: relative;
+      font-size: 0.93rem;
+      color: var(--mid);
+      border-bottom: 1px dashed #e8dfc8;
+    }
+    .route-steps li:last-child { border-bottom: none; }
+    .route-steps li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 0; top: 0.5rem;
+      width: 22px; height: 22px;
+      background: var(--gold);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    /* ── Wunschliste ───────────────────────────────────────────────────── */
+    .wish-hero {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+    }
+    .wish-icon {
+      font-size: 3.5rem;
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+    .wish-poem {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border: 1px solid #ede4d4;
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--dark);
+      text-align: center;
+      font-style: italic;
+      max-width: 680px;
+      margin: 0 auto 2rem;
+    }
+    .wish-poem strong {
+      font-style: normal;
+      display: block;
+      margin-top: 1.2rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      color: var(--gold);
+    }
+
+    /* ── Anmeldung ─────────────────────────────────────────────────────── */
+    .rsvp-wrap {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .rsvp-intro {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border: 1px solid #ede4d4;
+    }
+    .form-group { margin-bottom: 1.4rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #ddd5c0;
+      border-radius: 8px;
+      font-size: 0.97rem;
+      color: var(--dark);
+      background: var(--cream);
+      font-family: var(--font-sans);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184,151,90,0.18);
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .radio-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--mid);
+      padding: 0.5rem 1rem;
+      border: 1.5px solid #ddd5c0;
+      border-radius: 8px;
+      transition: border-color .2s, background .2s;
+    }
+    .radio-label input[type="radio"] { accent-color: var(--gold); }
+    .radio-label:has(input:checked) {
+      border-color: var(--gold);
+      background: var(--gold-bg);
+      color: var(--dark);
+    }
+
+    .form-submit {
+      text-align: center;
+      margin-top: 1.8rem;
+    }
+    .btn-submit {
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      padding: 0.85rem 2.8rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s, box-shadow .2s, transform .15s;
+      font-family: var(--font-sans);
+    }
+    .btn-submit:hover {
+      background: var(--dark);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+    }
+    .form-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-top: 0.8rem;
+    }
+
+    /* ── Beiträge ──────────────────────────────────────────────────────── */
+    .beitrag-hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .witness-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border: 1px solid #ede4d4;
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .witness-names {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin: 1rem 0 0.3rem;
+    }
+    .witness-subtitle {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Kontakt ───────────────────────────────────────────────────────── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .contact-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      border: 1px solid #ede4d4;
+      text-align: center;
+    }
+    .contact-card .icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+    .contact-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+    .contact-card p { font-size: 0.9rem; }
+
+    .contact-names-big {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 0.6rem;
+      word-spacing: 0.2em;
+    }
+    .contact-address {
+      text-align: center;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      color: var(--mid);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Footer ────────────────────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+    }
+    footer strong { color: var(--gold-lt); }
+    footer .cross {
+      font-size: 1.5rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── Countdown ─────────────────────────────────────────────────────── */
+    .countdown {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+    .countdown-block {
+      text-align: center;
+      background: #fff;
+      border: 1px solid #ede4d4;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      min-width: 80px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .countdown-num {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .countdown-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 0.3rem;
+    }
+
+    /* ── Responsive ────────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      section { padding: 60px 1rem; }
+      .timeline-item { grid-template-columns: 65px 1fr; }
+      .form-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">C &amp; R · 2026</a>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#grosser-tag">Grosser Tag</a></li>
+      <li><a href="#wegbeschreibung">Wegbeschreibung</a></li>
+      <li><a href="#wunschliste">Wunschliste</a></li>
+      <li><a href="#anmeldung">An- / Abmeldung</a></li>
+      <li><a href="#beitraege">Beiträge</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-content">
+    <span class="hero-ornament">✦ ✦ ✦</span>
+    <h1 class="hero-names">Corina<br><span>&amp;</span><br>Raffael</h1>
+    <p class="hero-date">25. Juli 2026 · Sulgen &amp; Bischofszell</p>
+    <div class="hero-verse">
+      „Was Gott zusammengefügt hat, das soll der Mensch nicht scheiden."<br>
+      <small style="font-style:normal;font-size:0.8rem;letter-spacing:0.1em;color:rgba(255,255,255,0.6);">— Matthäus 19,6</small>
+    </div>
+    <a class="hero-scroll" href="#grosser-tag" aria-label="Weiter scrollen">↓</a>
+  </div>
+</section>
+
+<!-- ═══ GROSSER TAG ════════════════════════════════════════════════════════ -->
+<section id="grosser-tag">
+  <div class="section-inner">
+    <span class="section-tag">Der grosse Tag</span>
+    <h2>Ja, wir <span class="gold">trauen uns!</span></h2>
+
+    <p>
+      Es gibt Momente im Leben, die einen atemlos innehalten lassen – Momente, in denen man spürt:
+      Hier wirkt etwas Grösseres als wir selbst. Für uns ist der <strong>25. Juli 2026</strong> genau
+      so ein Moment. Mit Demut, Freude und tiefer Dankbarkeit gegenüber Gott möchten wir vor seinen
+      Augen und im Kreis unserer liebsten Menschen Ja zueinander sagen.
+    </p>
+    <p>
+      Wir laden euch herzlich ein, diesen unvergesslichen Tag mit uns zu feiern –
+      von der feierlichen Trauung bis in den lauen Sommerabend hinein.
+    </p>
+
+    <div class="verse-box">
+      <q>Die Liebe ist geduldig, die Liebe ist gütig. Sie ist nicht neidisch, sie prahlt nicht,
+      sie bläht sich nicht auf.</q>
+      <cite>— 1. Korinther 13,4</cite>
+    </div>
+
+    <h3 style="font-family:var(--font-serif);font-size:1.1rem;color:var(--dark);margin-bottom:1rem;">Ablauf des Tages</h3>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-time">13:30<small>Uhr</small></div>
+        <div class="timeline-body">
+          <h3>Treffpunkt &amp; Empfang</h3>
+          <p>Wir freuen uns, euch vor der FEG Sulgen willkommen zu heissen. Nehmt euch Zeit zum
+          Ankommen, Umarmen und gemeinsamen Staunen – dieser Tag gehört uns allen.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-time">15:00<small>Uhr</small></div>
+        <div class="timeline-body">
+          <h3>Trauungsgottesdienst</h3>
+          <p>In der <strong>FEG Sulgen</strong>, Kapellenstrasse 1, 8583 Sulgen, sprechen wir
+          feierlich unser Ja – vor Gott, der unsere Wege zusammengeführt hat, und vor euch,
+          den Menschen, die uns am nächsten stehen.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-time">~16:30<small>Uhr</small></div>
+        <div class="timeline-body">
+          <h3>Fahrt zum Hof Gertau</h3>
+          <p>Nach der Trauung brechen wir gemeinsam auf zum <strong>Hof Gertau</strong> in
+          Bischofszell – ca. 15 Minuten Fahrt durch das idyllische Thurgauer Land. Alle
+          Wegangaben findet ihr im Bereich «Wegbeschreibung».</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-time">~17:00<small>Uhr</small></div>
+        <div class="timeline-body">
+          <h3>Apéro &amp; Grillabend</h3>
+          <p>Mit einem prickelnden Apéro stossen wir gemeinsam auf das Brautpaar an.
+          Im Anschluss erwartet euch ein gemütlicher, festlicher Grill-Abend – gutes Essen,
+          gute Gespräche und vielleicht sogar das eine oder andere Lied unter dem Sternenhimmel.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Countdown -->
+    <div class="divider">· · ·</div>
+    <h3 style="font-family:var(--font-serif);color:var(--dark);text-align:center;margin-bottom:0.5rem;">Noch</h3>
+    <div class="countdown" id="countdown">
+      <div class="countdown-block"><span class="countdown-num" id="cd-days">–</span><div class="countdown-label">Tage</div></div>
+      <div class="countdown-block"><span class="countdown-num" id="cd-hours">–</span><div class="countdown-label">Stunden</div></div>
+      <div class="countdown-block"><span class="countdown-num" id="cd-minutes">–</span><div class="countdown-label">Minuten</div></div>
+      <div class="countdown-block"><span class="countdown-num" id="cd-seconds">–</span><div class="countdown-label">Sekunden</div></div>
+    </div>
+    <p style="text-align:center;font-size:0.85rem;">bis zum grossen Tag · 25. Juli 2026</p>
+
+    <!-- Fotogalerie -->
+    <div class="divider">· · ·</div>
+    <div class="photo-grid">
+      <img src="HandRinge.png"                            alt="Hände und Ringe" loading="lazy" />
+      <img src="BibleLove.png"                            alt="Bibel und Liebe" loading="lazy" />
+      <img src="jakob-wiesinger-heart-2489358_1920.jpg"  alt="Herz" loading="lazy" />
+      <img src="anncapictures-roses-1420728_1920.jpg"    alt="Rosen" loading="lazy" />
+      <img src="trixpaule-deco-3845653_1920.png"         alt="Dekoration" loading="lazy" />
+      <img src="silberfuchs-bunch-of-flowers-1511051.jpg" alt="Blumenstrauss" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WEGBESCHREIBUNG ════════════════════════════════════════════════════ -->
+<section id="wegbeschreibung">
+  <div class="section-inner">
+    <span class="section-tag">Wegbeschreibung</span>
+    <h2>So findet ihr zu <span class="gold">uns</span></h2>
+
+    <p>
+      Zwei wunderschöne Orte erwarten euch an diesem Tag. Wir haben für beide Locations
+      alle wichtigen Infos und Links zu Google Maps zusammengestellt, damit ihr entspannt
+      und rechtzeitig ankommt – ganz ohne Stress.
+    </p>
+
+    <div class="location-cards">
+
+      <div class="location-card">
+        <img class="location-card-img" src="Trauung.png" alt="FEG Sulgen Trauung" />
+        <div class="location-card-body">
+          <h3>① FEG Sulgen – Trauung</h3>
+          <address>
+            Kapellenstrasse 1<br>
+            8583 Sulgen<br>
+            <br>
+            <strong>Treffpunkt: 13:30 Uhr</strong><br>
+            Trauungsbeginn: 15:00 Uhr
+          </address>
+          <a class="btn btn-gold"
+             href="https://www.google.com/maps/search/?api=1&query=Kapellenstrasse+1+8583+Sulgen"
+             target="_blank" rel="noopener">
+            ↗ Google Maps öffnen
+          </a>
+        </div>
+      </div>
+
+      <div class="location-card">
+        <img class="location-card-img" src="garten-gg-emotions-2127370_1920.jpg" alt="Hof Gertau Bischofszell" />
+        <div class="location-card-body">
+          <h3>② Hof Gertau – Feier</h3>
+          <address>
+            Gertau<br>
+            9220 Bischofszell<br>
+            <br>
+            <strong>Apéro &amp; Grillabend</strong><br>
+            ab ca. 17:00 Uhr
+          </address>
+          <a class="btn btn-gold"
+             href="https://www.google.com/maps/search/?api=1&query=Gertau+9220+Bischofszell"
+             target="_blank" rel="noopener">
+            ↗ Google Maps öffnen
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Route -->
+    <div class="route-note">
+      <h3>Route: FEG Sulgen → Hof Gertau (~15 Min.)</h3>
+      <ol class="route-steps">
+        <li>Kapellenstrasse verlassen, links auf die <strong>Hauptstrasse</strong> in Richtung Bürglen</li>
+        <li>Weiterfahren über Bürglen nach <strong>Bischofszell</strong> (ca. 10 km)</li>
+        <li>In Bischofszell dem Hinweisschild <strong>«Gertau»</strong> folgen</li>
+        <li>Ankunft <strong>Hof Gertau</strong> – Parkplätze vor Ort vorhanden</li>
+      </ol>
+      <br>
+      <a class="btn btn-outline"
+         href="https://www.google.com/maps/dir/Kapellenstrasse+1+8583+Sulgen/Gertau+9220+Bischofszell"
+         target="_blank" rel="noopener">
+        ↗ Komplette Route in Google Maps
+      </a>
+    </div>
+
+    <div class="verse-box" style="margin-top:2rem;">
+      <q>Der Herr behüte deinen Ausgang und deinen Eingang von nun an bis in Ewigkeit.</q>
+      <cite>— Psalm 121,8</cite>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ WUNSCHLISTE ════════════════════════════════════════════════════════ -->
+<section id="wunschliste">
+  <div class="section-inner">
+    <span class="section-tag">Wunschliste</span>
+    <h2>Und wenn ihr fragen wollt <span class="gold">…</span></h2>
+
+    <div class="wish-hero">
+      <span class="wish-icon">✦</span>
+      <p>
+        Wir sind reich beschenkt – nicht mit Dingen, sondern mit dem, was wirklich zählt.
+        Und doch gibt es einen stillen Traum, den wir mit euch teilen möchten.
+      </p>
+    </div>
+
+    <div class="wish-poem">
+      Wir haben schon fast alles:<br>
+      <em>Gott an unserer Seite,</em><br>
+      tolle Menschen in unserem Leben,<br>
+      ein Zuhause voller Liebe.<br><br>
+
+      Was uns noch fehlt, ist ein gemeinsamer Familienurlaub,<br>
+      in dem wir all das einfach geniessen können –<br>
+      Momente, die bleiben. Erinnerungen, die wärmen.<br><br>
+
+      Wer uns eine kleine Freude machen möchte,<br>
+      darf uns gerne einen Beitrag dazu schenken.<br>
+      Jeder Franken ist ein Schritt in Richtung<br>
+      eines unvergesslichen Moments.<br><br>
+
+      <em>Wir freuen uns – und sagen von Herzen Danke.</em>
+
+      <strong>– Corina &amp; Raffael</strong>
+    </div>
+
+    <div class="verse-box">
+      <q>Denn ich weiss, was ich für euch geplant habe, spricht der Herr – Pläne zum Heil
+      und nicht zum Unheil, um euch eine Zukunft und eine Hoffnung zu geben.</q>
+      <cite>— Jeremia 29,11</cite>
+    </div>
+
+    <div style="text-align:center;margin-top:1.5rem;">
+      <img src="LoveisinTheAir.png" alt="Love is in the Air"
+           style="max-width:320px;width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1);" />
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ ANMELDUNG ══════════════════════════════════════════════════════════ -->
+<section id="anmeldung">
+  <div class="section-inner">
+    <span class="section-tag">An- / Abmeldung</span>
+    <h2>Gebt uns <span class="gold">Bescheid</span></h2>
+
+    <div class="rsvp-wrap">
+      <div class="rsvp-intro">
+        <p>
+          Damit wir unseren grossen Tag in vollen Zügen geniessen können, bitten wir euch
+          herzlich, euch bis spätestens <strong>30. Juni 2026</strong> an- oder abzumelden.
+          Jede Antwort hilft uns, alles liebevoll vorzubereiten.
+        </p>
+        <p style="font-family:var(--font-serif);font-style:italic;color:var(--gold);">
+          „Ihr seid unser grösstes Geschenk."
+        </p>
+      </div>
+
+      <!-- Das Formular nutzt mailto – kein Server nötig -->
+      <form class="form-card" id="rsvp-form">
+
+        <div class="form-group">
+          <label for="name">Name(n) der Gäste *</label>
+          <input type="text" id="name" name="name" placeholder="z. B. Maria &amp; Thomas Muster" required />
+        </div>
+
+        <div class="form-group">
+          <label>An- oder Abmeldung *</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="status" value="Anmeldung" required /> ✓ Ich / Wir kommen!
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="status" value="Abmeldung" /> ✗ Leider verhindert
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="persons">Anzahl Personen *</label>
+          <select id="persons" name="persons" required>
+            <option value="" disabled selected>Bitte auswählen</option>
+            <option value="1">1 Person</option>
+            <option value="2">2 Personen</option>
+            <option value="3">3 Personen</option>
+            <option value="4">4 Personen</option>
+            <option value="5">5 Personen</option>
+            <option value="6+">6 oder mehr</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Nachricht / Bemerkungen (optional)</label>
+          <textarea id="message" name="message" placeholder="Allergien, besondere Wünsche oder einfach ein liebes Wort …"></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">Absenden ✦</button>
+          <p class="form-note">Eure Antwort wird direkt per E-Mail übermittelt.</p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BEITRÄGE ═══════════════════════════════════════════════════════════ -->
+<section id="beitraege">
+  <div class="section-inner">
+    <span class="section-tag">Beiträge</span>
+    <h2>Gemeinsam diesen Tag <span class="gold">gestalten</span></h2>
+
+    <div class="beitrag-hero">
+      <p>
+        Eine Hochzeit ist mehr als ein Fest – sie ist ein Gemeinschaftswerk aus Liebe,
+        Gebet und gelebter Gemeinschaft. Wenn euer Herz brennt, etwas beizutragen:
+        ein Lied, ein Gedicht, ein Gebet, ein Bild oder eine überraschende Idee –
+        dann seid ihr genau die Richtigen.
+      </p>
+      <p>
+        Denn Gott hat jeden von uns mit einzigartigen Gaben ausgestattet.
+        Vielleicht ist euer Beitrag genau das, was diesen Tag unvergesslich macht.
+      </p>
+    </div>
+
+    <div class="verse-box">
+      <q>Jeder gebe, wie er sich in seinem Herzen vorgenommen hat, nicht verdrossen oder aus
+      Zwang; denn einen fröhlichen Geber hat Gott lieb.</q>
+      <cite>— 2. Korinther 9,7</cite>
+    </div>
+
+    <div class="witness-card">
+      <div style="font-size:2rem;">🕊️</div>
+      <p style="font-family:var(--font-serif);font-style:italic;color:var(--mid);margin-top:0.8rem;">
+        Ideen, Überraschungen oder Fragen rund um Beiträge am grossen Tag?<br>
+        Dann wendet euch vertrauensvoll an unsere Trauzeugen:
+      </p>
+      <div class="witness-names">Sarah &amp; Gottfried</div>
+      <div class="witness-subtitle">Trauzeugen von Corina &amp; Raffael</div>
+      <p style="font-size:0.9rem;color:var(--mid);">
+        Sie freuen sich auf eure Ideen und koordinieren alles mit Herzblut –
+        damit der Tag nicht nur schön, sondern unvergesslich wird.
+      </p>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem;">
+      <img src="JesusWedding.png" alt="Jesus und die Hochzeit"
+           style="max-width:400px;width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1);" />
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ KONTAKT ════════════════════════════════════════════════════════════ -->
+<section id="kontakt">
+  <div class="section-inner">
+    <span class="section-tag">Kontakt</span>
+    <h2>Immer für euch <span class="gold">erreichbar</span></h2>
+
+    <p class="contact-names-big">C O R I N A &nbsp; H U B E R &nbsp; &amp; &nbsp; R A F F A E L &nbsp; B E A R T H</p>
+    <p class="contact-address">B Ü H L S T R A S S E &nbsp; 1 &nbsp; · &nbsp; 9 2 1 7 &nbsp; N E U K I R C H &nbsp; A N &nbsp; D E R &nbsp; T H U R</p>
+
+    <div class="contact-layout">
+      <div class="contact-card">
+        <div class="icon">✉️</div>
+        <h3>E-Mail</h3>
+        <p><a href="mailto:bearth-huber@hotmail.com" style="color:var(--gold);text-decoration:none;">bearth-huber@hotmail.com</a></p>
+        <p style="font-size:0.82rem;margin-top:0.5rem;">Für Fragen rund um die Hochzeit</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">🙏</div>
+        <h3>An- &amp; Abmeldung</h3>
+        <p>Nutzt unser Formular im Bereich <a href="#anmeldung" style="color:var(--gold);">«An- / Abmeldung»</a></p>
+        <p style="font-size:0.82rem;margin-top:0.5rem;">Bis spätestens 30. Juni 2026</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">🕊️</div>
+        <h3>Beiträge &amp; Ideen</h3>
+        <p>Trauzeugen: <strong>Sarah &amp; Gottfried</strong></p>
+        <p style="font-size:0.82rem;margin-top:0.5rem;">Kontakt über <a href="#beitraege" style="color:var(--gold);">«Beiträge»</a></p>
+      </div>
+    </div>
+
+    <div class="verse-box" style="margin-top:2.5rem;">
+      <q>Der Herr segne dich und behüte dich; der Herr lasse sein Angesicht leuchten über dir
+      und sei dir gnädig; der Herr hebe sein Angesicht über dich und gebe dir Frieden.</q>
+      <cite>— 4. Mose 6,24–26</cite>
+    </div>
+
+    <div style="text-align:center;margin-top:2rem;">
+      <img src="BibleHands.png" alt="Bibelhände"
+           style="max-width:340px;width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1);" />
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════════════════ -->
+<footer>
+  <span class="cross">✟</span>
+  <strong>Corina &amp; Raffael · 25. Juli 2026</strong><br><br>
+  „Was Gott zusammengefügt hat, das soll der Mensch nicht scheiden." – Mt 19,6<br><br>
+  <span style="font-size:0.75rem;">Mit Liebe gestaltet · In Dankbarkeit gegenüber Gott</span>
+</footer>
+
+<!-- ═══ SCRIPTS ════════════════════════════════════════════════════════════ -->
+<script>
+  /* Hamburger */
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  /* Countdown */
+  function updateCountdown() {
+    const target = new Date('2026-07-25T13:30:00');
+    const now    = new Date();
+    const diff   = target - now;
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML =
+        '<p style="font-family:var(--font-serif);font-size:1.4rem;color:var(--gold);">🎉 Der grosse Tag ist da!</p>';
+      return;
+    }
+    const d  = Math.floor(diff / 86400000);
+    const h  = Math.floor((diff % 86400000) / 3600000);
+    const m  = Math.floor((diff % 3600000)  / 60000);
+    const s  = Math.floor((diff % 60000)    / 1000);
+    document.getElementById('cd-days').textContent    = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent   = String(h).padStart(2,'0');
+    document.getElementById('cd-minutes').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-seconds').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* RSVP Formular – mailto */
+  document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = document.getElementById('name').value.trim();
+    const status  = document.querySelector('input[name="status"]:checked')?.value || '';
+    const persons = document.getElementById('persons').value;
+    const msg     = document.getElementById('message').value.trim();
+
+    if (!name || !status || !persons) {
+      alert('Bitte alle Pflichtfelder ausfüllen.');
+      return;
+    }
+
+    const subject = encodeURIComponent(`Hochzeit C&R 2026 – ${status}: ${name}`);
+    const body    = encodeURIComponent(
+      `${status}\n\nName(n): ${name}\nAnzahl Personen: ${persons}\n\nNachricht:\n${msg || '–'}\n\n---\nGesendet über die Hochzeitswebseite`
+    );
+    window.location.href = `mailto:bearth-huber@hotmail.com?subject=${subject}&body=${body}`;
+  });
+
+  /* Aktiven Nav-Link hervorheben */
+  const sections = document.querySelectorAll('section[id]');
+  const navAs    = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) cur = s.id;
+    });
+    navAs.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--gold)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
