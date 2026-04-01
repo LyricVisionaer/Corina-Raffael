@@ -947,7 +947,7 @@
       <div class="rsvp-intro">
         <p>
           Damit wir unseren grossen Tag in vollen Zügen geniessen können, bitten wir euch
-          herzlich, euch bis spätestens <strong>30. Juni 2026</strong> an- oder abzumelden.
+          herzlich, euch bis spätestens <strong>15. Mai 2026</strong> an- oder abzumelden.
           Jede Antwort hilft uns, alles liebevoll vorzubereiten.
         </p>
         <p style="font-family:var(--font-serif);font-style:italic;color:var(--gold);">
@@ -955,50 +955,95 @@
         </p>
       </div>
 
-      <!-- Das Formular nutzt mailto – kein Server nötig -->
-      <form class="form-card" id="rsvp-form">
-
-        <div class="form-group">
-          <label for="name">Name(n) der Gäste *</label>
-          <input type="text" id="name" name="name" placeholder="z. B. Maria &amp; Thomas Muster" required />
-        </div>
-
-        <div class="form-group">
-          <label>An- oder Abmeldung *</label>
-          <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="status" value="Anmeldung" required /> ✓ Ich / Wir kommen!
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="status" value="Abmeldung" /> ✗ Leider verhindert
-            </label>
+      <!-- Zwei Optionen: Formular & WhatsApp -->
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; justify-content: center;">
+        
+        <!-- Formular-Karte -->
+        <div style="flex: 1; min-width: 280px; background: #fff; border-radius: 16px; padding: 1.8rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #ede4d4;">
+          <div style="text-align: center; margin-bottom: 1.2rem;">
+            <span style="font-size: 2rem;">📧</span>
+            <h3 style="font-family: var(--font-serif); color: var(--dark); margin-top: 0.5rem; font-size: 1.3rem;">Per Kontaktformular</h3>
+            <p style="font-size: 0.85rem; color: var(--mid);">Einfach ausfüllen & absenden</p>
           </div>
+          
+          <form id="rsvp-form">
+            <div class="form-group">
+              <label for="name">Name(n) der Gäste *</label>
+              <input type="text" id="name" name="name" placeholder="z. B. Maria &amp; Thomas Muster" required />
+            </div>
+
+            <div class="form-group">
+              <label>An- oder Abmeldung *</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="status" value="Anmeldung" required /> ✓ Ich / Wir kommen!
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="status" value="Abmeldung" /> ✗ Leider verhindert
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="persons">Anzahl Personen *</label>
+              <select id="persons" name="persons" required>
+                <option value="" disabled selected>Bitte auswählen</option>
+                <option value="1">1 Person</option>
+                <option value="2">2 Personen</option>
+                <option value="3">3 Personen</option>
+                <option value="4">4 Personen</option>
+                <option value="5">5 Personen</option>
+                <option value="6+">6 oder mehr</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Nachricht / Bemerkungen (optional)</label>
+              <textarea id="message" name="message" placeholder="Allergien, besondere Wünsche oder einfach ein liebes Wort …"></textarea>
+            </div>
+
+            <div class="form-submit">
+              <button type="submit" class="btn-submit">Absenden ✦</button>
+              <p class="form-note">Eure Antwort wird direkt per E-Mail übermittelt.</p>
+            </div>
+          </form>
         </div>
 
-        <div class="form-group">
-          <label for="persons">Anzahl Personen *</label>
-          <select id="persons" name="persons" required>
-            <option value="" disabled selected>Bitte auswählen</option>
-            <option value="1">1 Person</option>
-            <option value="2">2 Personen</option>
-            <option value="3">3 Personen</option>
-            <option value="4">4 Personen</option>
-            <option value="5">5 Personen</option>
-            <option value="6+">6 oder mehr</option>
-          </select>
+        <!-- WhatsApp-Karte -->
+        <div style="flex: 1; min-width: 280px; background: #fff; border-radius: 16px; padding: 1.8rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #ede4d4; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+          <div style="margin-bottom: 1.2rem;">
+            <span style="font-size: 2.8rem;">💬</span>
+            <h3 style="font-family: var(--font-serif); color: var(--dark); margin-top: 0.5rem; font-size: 1.3rem;">Per WhatsApp</h3>
+            <p style="font-size: 0.85rem; color: var(--mid);">Kurz & direkt – einfach Nachricht senden</p>
+          </div>
+          
+          <a href="https://wa.me/41798464293?text=Hallo%20Corina%20%26%20Raffael%2C%20ich%20m%C3%B6chte%20mich%20f%C3%BCr%20eure%20Hochzeit%20anmelden%3A" 
+             target="_blank" 
+             style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #25D366; color: white; text-decoration: none; padding: 12px 24px; border-radius: 40px; font-weight: 600; font-size: 1rem; margin: 1rem 0; transition: transform 0.2s, box-shadow 0.2s;">
+            <span style="font-size: 1.3rem;">📱</span>
+            Jetzt per WhatsApp antworten
+          </a>
+          
+          <p style="font-size: 0.8rem; color: var(--mid); margin-top: 0.8rem;">
+            Oder scannen mit dem Smartphone:<br>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://wa.me/41797313063?text=Hallo%20Corina%20%26%20Raffael%2C%20ich%20m%C3%B6chte%20mich%20f%C3%BCr%20eure%20Hochzeit%20anmelden%3A&color=B8975A&bgcolor=F9F4EC" 
+                 alt="WhatsApp QR-Code" 
+                 style="width: 80px; height: 80px; margin-top: 8px; border-radius: 12px;">
+          </p>
+          <p style="font-size: 0.75rem; color: #aaa; margin-top: 0.5rem;">
+            *Bei WhatsApp bitte Namen und Anzahl Personen angeben
+          </p>
         </div>
-
-        <div class="form-group">
-          <label for="message">Nachricht / Bemerkungen (optional)</label>
-          <textarea id="message" name="message" placeholder="Allergien, besondere Wünsche oder einfach ein liebes Wort …"></textarea>
-        </div>
-
-        <div class="form-submit">
-          <button type="submit" class="btn-submit">Absenden ✦</button>
-          <p class="form-note">Eure Antwort wird direkt per E-Mail übermittelt.</p>
-        </div>
-
-      </form>
+        
+      </div>
+      
+      <!-- Hinweis: Beide Wege möglich -->
+      <div style="text-align: center; margin-top: 0.5rem;">
+        <p style="font-size: 0.85rem; color: var(--mid); border-top: 1px solid #ede4d4; padding-top: 1.2rem; display: inline-block; padding-left: 1.5rem; padding-right: 1.5rem;">
+          ✦ Anmeldung möglich via Kontaktformular oder direkt per WhatsApp ✦
+        </p>
+      </div>
+      
     </div>
   </div>
 </section>
