@@ -133,11 +133,59 @@
       padding: 80px 1.5rem 3rem;
       position: relative;
       overflow: hidden;
-      background:
-        linear-gradient(to bottom, rgba(44,35,22,0.52) 0%, rgba(44,35,22,0.25) 60%, rgba(249,244,236,1) 100%),
-        url('trixpaule-wedding-2822602_1920.jpg') center center / cover no-repeat;
     }
-    .hero-content { position: relative; z-index: 2; max-width: 700px; }
+
+    /* Bild-Container (absolut positioniert) */
+    .hero-image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Das Bild selbst */
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 85%;
+    }
+
+    /* Grössere Bildschirme (ab 768px) */
+    @media (min-width: 768px) {
+      .hero-image {
+        object-position: center bottom;
+      }
+    }
+
+    /* Sehr breite Bildschirme (ab 1200px) */
+    @media (min-width: 1200px) {
+      .hero-image {
+        object-position: center 90%;
+      }
+    }
+
+    /* Der dunkle Überlagerungsgradient */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(44,35,22,0.52) 0%, rgba(44,35,22,0.25) 60%, rgba(249,244,236,1) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content { 
+      position: relative; 
+      z-index: 2; 
+      max-width: 700px; 
+    }
+
     .hero-ornament {
       font-size: 2rem;
       color: var(--gold-lt);
@@ -145,6 +193,7 @@
       margin-bottom: 1rem;
       display: block;
     }
+
     .hero-names {
       font-family: var(--font-serif);
       font-size: clamp(2.8rem, 8vw, 5.5rem);
@@ -153,7 +202,9 @@
       text-shadow: 0 2px 18px rgba(0,0,0,0.45);
       letter-spacing: 0.04em;
     }
+
     .hero-names span { color: var(--gold-lt); }
+
     .hero-date {
       margin-top: 1.5rem;
       font-size: 1.05rem;
@@ -162,6 +213,7 @@
       color: rgba(255,255,255,0.9);
       text-shadow: 0 1px 8px rgba(0,0,0,0.4);
     }
+
     .hero-verse {
       margin-top: 2rem;
       font-family: var(--font-serif);
@@ -173,6 +225,7 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     .hero-scroll {
       margin-top: 3rem;
       color: var(--gold-lt);
@@ -181,6 +234,7 @@
       display: inline-block;
       cursor: pointer;
     }
+
     @keyframes bounce {
       0%,100% { transform: translateY(0); }
       50%      { transform: translateY(8px); }
@@ -587,6 +641,70 @@
       margin-bottom: 1.5rem;
     }
 
+    /* ── Beitrags-Deadline (neu) ───────────────────────────────────────── */
+    .beitrag-deadline {
+      background: linear-gradient(135deg, var(--gold-bg) 0%, #fff 100%);
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin: 2rem auto;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .beitrag-deadline h4 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .beitrag-deadline .deadline-date {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: var(--gold);
+      margin: 0.5rem 0;
+    }
+
+    .beitrag-deadline .deadline-note {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 0.5rem;
+    }
+
+    .beitrag-countdown {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+
+    .beitrag-countdown .cd-block {
+      background: #fff;
+      border-radius: 12px;
+      padding: 0.5rem 0.8rem;
+      min-width: 60px;
+      text-align: center;
+      border: 1px solid var(--gold-lt);
+    }
+
+    .beitrag-countdown .cd-number {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .beitrag-countdown .cd-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
     /* ── Kontakt ───────────────────────────────────────────────────────── */
     .contact-layout {
       display: grid;
@@ -706,7 +824,13 @@
 </nav>
 
 <!-- ═══ HERO ═══════════════════════════════════════════════════════════════ -->
-<section id="hero" style="background: linear-gradient(to bottom, rgba(44,35,22,0.52) 0%, rgba(44,35,22,0.25) 60%, rgba(249,244,236,1) 100%), url('trixpaule-wedding-2822602_1920.jpg') center bottom / cover no-repeat; background-attachment: scroll;">
+<section id="hero">
+  <div class="hero-image-container">
+    <img src="trixpaule-wedding-2822602_1920.jpg" 
+         alt="Hochzeitsstimmung" 
+         class="hero-image">
+  </div>
+  
   <div class="hero-content">
     <span class="hero-ornament">✦ ✦ ✦</span>
     <h1 class="hero-names">Corina<br><span>&amp;</span><br>Raffael</h1>
@@ -800,11 +924,11 @@
     <!-- Fotogalerie -->
     <div class="divider">· · ·</div>
     <div class="photo-grid">
-      <img src="HandRinge.png"                            alt="Hände und Ringe" loading="lazy" />
-      <img src="BibleLove.png"                            alt="Bibel und Liebe" loading="lazy" />
-      <img src="jakob-wiesinger-heart-2489358_1920.jpg"  alt="Herz" loading="lazy" />
-      <img src="anncapictures-roses-1420728_1920.jpg"    alt="Rosen" loading="lazy" />
-      <img src="trixpaule-deco-3845653_1920.png"         alt="Dekoration" loading="lazy" />
+      <img src="HandRinge.png" alt="Hände und Ringe" loading="lazy" />
+      <img src="BibleLove.png" alt="Bibel und Liebe" loading="lazy" />
+      <img src="jakob-wiesinger-heart-2489358_1920.jpg" alt="Herz" loading="lazy" />
+      <img src="anncapictures-roses-1420728_1920.jpg" alt="Rosen" loading="lazy" />
+      <img src="trixpaule-deco-3845653_1920.png" alt="Dekoration" loading="lazy" />
       <img src="silberfuchs-bunch-of-flowers-1511051.jpg" alt="Blumenstrauss" loading="lazy" />
     </div>
   </div>
@@ -1062,6 +1186,21 @@
       </p>
     </div>
 
+    <!-- ⭐ NEU: Hervorgehobenes Abgabedatum mit Countdown -->
+    <div class="beitrag-deadline">
+      <h4>📅 Wichtige Frist für Beiträge &amp; Ideen</h4>
+      <div class="deadline-date">⏰ 15. Mai 2026</div>
+      <div class="beitrag-countdown" id="beitrag-countdown">
+        <div class="cd-block"><span class="cd-number" id="beitrag-days">–</span><div class="cd-label">Tage</div></div>
+        <div class="cd-block"><span class="cd-number" id="beitrag-hours">–</span><div class="cd-label">Stunden</div></div>
+        <div class="cd-block"><span class="cd-number" id="beitrag-minutes">–</span><div class="cd-label">Minuten</div></div>
+        <div class="cd-block"><span class="cd-number" id="beitrag-seconds">–</span><div class="cd-label">Sekunden</div></div>
+      </div>
+      <div class="deadline-note">
+        ✦ Bitte meldet eure Beiträge bis zu diesem Datum – damit wir alles liebevoll planen können ✦
+      </div>
+    </div>
+
     <div class="verse-box">
       <q>Jeder gebe, wie er sich in seinem Herzen vorgenommen hat, nicht verdrossen oder aus
       Zwang; denn einen fröhlichen Geber hat Gott lieb.</q>
@@ -1130,13 +1269,14 @@
         <div class="icon">🙏</div>
         <h3>An- &amp; Abmeldung</h3>
         <p>Nutzt unser Formular im Bereich <a href="#anmeldung" style="color:var(--gold);">«An- / Abmeldung»</a></p>
-        <p style="font-size:0.82rem;margin-top:0.5rem;">Bis spätestens 30. Juni 2026</p>
+        <p style="font-size:0.82rem;margin-top:0.5rem;">Bis spätestens 15. Mai 2026</p>
       </div>
       <div class="contact-card">
         <div class="icon">🕊️</div>
         <h3>Beiträge &amp; Ideen</h3>
         <p>Trauzeugen: <strong>Sarah &amp; Gottfried</strong></p>
         <p style="font-size:0.82rem;margin-top:0.5rem;">Kontakt über <a href="#beitraege" style="color:var(--gold);">«Beiträge»</a></p>
+        <p style="font-size:0.75rem;color:var(--gold);margin-top:0.5rem;">⏰ Bis 15. Mai 2026</p>
       </div>
     </div>
 
@@ -1178,7 +1318,7 @@
     });
   });
 
-  /* Countdown */
+  /* Countdown für Hochzeitstag */
   function updateCountdown() {
     const target = new Date('2026-07-25T13:30:00');
     const now    = new Date();
@@ -1199,6 +1339,32 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  /* NEU: Beitrags-Countdown – Frist 15. Mai 2026 */
+  function updateBeitragCountdown() {
+    const target = new Date('2026-05-15T23:59:59');
+    const now    = new Date();
+    const diff   = target - now;
+    
+    if (diff <= 0) {
+      document.getElementById('beitrag-countdown').innerHTML = 
+        '<p style="font-family:var(--font-serif);color:var(--gold);">⏰ Frist abgelaufen – bitte direkt bei den Trauzeugen melden!</p>';
+      return;
+    }
+    
+    const d  = Math.floor(diff / 86400000);
+    const h  = Math.floor((diff % 86400000) / 3600000);
+    const m  = Math.floor((diff % 3600000) / 60000);
+    const s  = Math.floor((diff % 60000) / 1000);
+    
+    document.getElementById('beitrag-days').textContent    = String(d).padStart(2, '0');
+    document.getElementById('beitrag-hours').textContent   = String(h).padStart(2, '0');
+    document.getElementById('beitrag-minutes').textContent = String(m).padStart(2, '0');
+    document.getElementById('beitrag-seconds').textContent = String(s).padStart(2, '0');
+  }
+
+  updateBeitragCountdown();
+  setInterval(updateBeitragCountdown, 1000);
 
   /* RSVP Formular – mailto */
   document.getElementById('rsvp-form').addEventListener('submit', function(e) {
