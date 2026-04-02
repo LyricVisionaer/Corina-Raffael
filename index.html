@@ -135,37 +135,59 @@
       overflow: hidden;
     }
 
-    /* Bild-Container (absolut positioniert) */
-    .hero-image-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
+/* Bild-Container (absolut positioniert) */
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
 
-    /* Das Bild selbst */
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 85%;
-    }
+/* Beide Bilder gleich positioniert */
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    /* Grössere Bildschirme (ab 768px) */
-    @media (min-width: 768px) {
-      .hero-image {
-        object-position: center bottom;
-      }
-    }
+/* Desktop-Bild (Standard) */
+.hero-image-desktop {
+  display: block;
+}
 
-    /* Sehr breite Bildschirme (ab 1200px) */
-    @media (min-width: 1200px) {
-      .hero-image {
-        object-position: center 90%;
-      }
-    }
+/* Mobile-Bild (standardmässig ausgeblendet) */
+.hero-image-mobile {
+  display: none;
+}
+
+/* Auf Smartphones (max. 768px) */
+@media (max-width: 768px) {
+  .hero-image-desktop {
+    display: none;
+  }
+  .hero-image-mobile {
+    display: block;
+  }
+}
+
+/* Grössere Bildschirme (ab 768px) */
+@media (min-width: 768px) {
+  .hero-image-desktop {
+    object-position: center bottom;
+  }
+}
+
+/* Sehr breite Bildschirme (ab 1200px) */
+@media (min-width: 1200px) {
+  .hero-image-desktop {
+    object-position: center 90%;
+  }
+}
 
     /* Der dunkle Überlagerungsgradient */
     #hero::before {
@@ -674,36 +696,36 @@
       margin-top: 0.5rem;
     }
 
-    .beitrag-countdown {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin: 1rem 0;
-    }
+   .beitrag-countdown {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
 
-    .beitrag-countdown .cd-block {
-      background: #fff;
-      border-radius: 12px;
-      padding: 0.5rem 0.8rem;
-      min-width: 60px;
-      text-align: center;
-      border: 1px solid var(--gold-lt);
-    }
+.beitrag-countdown .cd-block {
+  background: #fff;
+  border-radius: 12px;
+  padding: 0.5rem 1.2rem;
+  min-width: 80px;
+  text-align: center;
+  border: 1px solid var(--gold-lt);
+}
 
-    .beitrag-countdown .cd-number {
-      font-family: var(--font-serif);
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: var(--gold);
-      line-height: 1;
-    }
+.beitrag-countdown .cd-number {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--gold);
+  line-height: 1;
+}
 
-    .beitrag-countdown .cd-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--mid);
-    }
+.beitrag-countdown .cd-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
 
     /* ── Kontakt ───────────────────────────────────────────────────────── */
     .contact-layout {
@@ -826,9 +848,14 @@
 <!-- ═══ HERO ═══════════════════════════════════════════════════════════════ -->
 <section id="hero">
   <div class="hero-image-container">
+    <!-- Desktop-Bild (Standard) -->
     <img src="trixpaule-wedding-2822602_1920.jpg" 
          alt="Hochzeitsstimmung" 
-         class="hero-image">
+         class="hero-image hero-image-desktop">
+    <!-- Mobile-Bild (wird nur auf Smartphones angezeigt) -->
+    <img src="trixpaule-wedding-2822602_1920_mobile.jpg" 
+         alt="Hochzeitsstimmung" 
+         class="hero-image hero-image-mobile">
   </div>
   
   <div class="hero-content">
@@ -1189,12 +1216,9 @@
     <!-- ⭐ NEU: Hervorgehobenes Abgabedatum mit Countdown -->
     <div class="beitrag-deadline">
       <h4>📅 Wichtige Frist für Beiträge &amp; Ideen</h4>
-      <div class="deadline-date">⏰ 15. Mai 2026</div>
+      <div class="deadline-date">⏰ 25. Mai 2026</div>
       <div class="beitrag-countdown" id="beitrag-countdown">
         <div class="cd-block"><span class="cd-number" id="beitrag-days">–</span><div class="cd-label">Tage</div></div>
-        <div class="cd-block"><span class="cd-number" id="beitrag-hours">–</span><div class="cd-label">Stunden</div></div>
-        <div class="cd-block"><span class="cd-number" id="beitrag-minutes">–</span><div class="cd-label">Minuten</div></div>
-        <div class="cd-block"><span class="cd-number" id="beitrag-seconds">–</span><div class="cd-label">Sekunden</div></div>
       </div>
       <div class="deadline-note">
         ✦ Bitte meldet eure Beiträge bis zu diesem Datum – damit wir alles liebevoll planen können ✦
@@ -1276,7 +1300,7 @@
         <h3>Beiträge &amp; Ideen</h3>
         <p>Trauzeugen: <strong>Sarah &amp; Gottfried</strong></p>
         <p style="font-size:0.82rem;margin-top:0.5rem;">Kontakt über <a href="#beitraege" style="color:var(--gold);">«Beiträge»</a></p>
-        <p style="font-size:0.75rem;color:var(--gold);margin-top:0.5rem;">⏰ Bis 15. Mai 2026</p>
+        <p style="font-size:0.75rem;color:var(--gold);margin-top:0.5rem;">⏰ Bis 25. Mai 2026</p>
       </div>
     </div>
 
@@ -1340,9 +1364,9 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  /* NEU: Beitrags-Countdown – Frist 15. Mai 2026 */
+  /* NEU: Beitrags-Countdown – Frist 25. Mai 2026 (nur Tage) */
   function updateBeitragCountdown() {
-    const target = new Date('2026-05-15T23:59:59');
+    const target = new Date('2026-05-25T23:59:59');
     const now    = new Date();
     const diff   = target - now;
     
@@ -1353,18 +1377,12 @@
     }
     
     const d  = Math.floor(diff / 86400000);
-    const h  = Math.floor((diff % 86400000) / 3600000);
-    const m  = Math.floor((diff % 3600000) / 60000);
-    const s  = Math.floor((diff % 60000) / 1000);
     
-    document.getElementById('beitrag-days').textContent    = String(d).padStart(2, '0');
-    document.getElementById('beitrag-hours').textContent   = String(h).padStart(2, '0');
-    document.getElementById('beitrag-minutes').textContent = String(m).padStart(2, '0');
-    document.getElementById('beitrag-seconds').textContent = String(s).padStart(2, '0');
+    document.getElementById('beitrag-days').textContent = String(d);
   }
 
   updateBeitragCountdown();
-  setInterval(updateBeitragCountdown, 1000);
+  setInterval(updateBeitragCountdown, 86400000); // Aktualisiert einmal pro Tag
 
   /* RSVP Formular – mailto */
   document.getElementById('rsvp-form').addEventListener('submit', function(e) {
