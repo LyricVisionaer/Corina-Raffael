@@ -532,6 +532,88 @@
       color: var(--gold);
     }
 
+    /* Neuer Stil für den Reise-Wunsch */
+    .dream-card {
+      background: linear-gradient(145deg, #fff 0%, var(--gold-bg) 100%);
+      border-radius: 24px;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 720px;
+      border: 1px solid var(--gold-lt);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      transition: transform .3s;
+    }
+    .dream-card:hover {
+      transform: translateY(-5px);
+    }
+    .dream-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.03em;
+    }
+    .dream-sub {
+      text-align: center;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1.5rem;
+      border-bottom: 1px dashed var(--gold-lt);
+      display: inline-block;
+      width: auto;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 0.5rem;
+    }
+    .dream-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .dream-img {
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+    }
+    .dream-img img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border: 3px solid white;
+    }
+    .dream-text {
+      flex: 2;
+      min-width: 240px;
+    }
+    .dream-text p {
+      margin-bottom: 0.75rem;
+      font-size: 0.98rem;
+    }
+    .dream-highlight {
+      background: var(--rose-lt);
+      padding: 0.6rem 1rem;
+      border-radius: 40px;
+      display: inline-block;
+      margin: 0.5rem 0;
+      font-weight: bold;
+      color: var(--dark);
+    }
+    .dream-highlight i {
+      font-style: normal;
+      color: var(--gold);
+      margin-right: 6px;
+    }
+    @media (max-width: 680px) {
+      .dream-card { padding: 1.5rem; }
+      .dream-card h3 { font-size: 1.4rem; }
+    }
+
     /* ── Anmeldung ─────────────────────────────────────────────────────── */
     .rsvp-wrap {
       max-width: 620px;
@@ -1074,6 +1156,33 @@
       <em>Wir freuen uns – und sagen von Herzen Danke.</em>
 
       <strong>– Corina &amp; Raffael</strong>
+    </div>
+
+    <!-- ⭐ NEU: Eingefügte Wunschreise "Nordwärts Kreuzfahrt" mit Bild -->
+    <div class="dream-card">
+      <h3>✧ Nordwärts Kreuzfahrt ✧</h3>
+      <div style="text-align: center;">
+        <div class="dream-sub">Unser Herzenswunsch</div>
+      </div>
+      <div class="dream-flex">
+        <div class="dream-img">
+          <img src="Kreuzfahrt.png" alt="Kreuzfahrtschiff Nordwärts" loading="lazy">
+        </div>
+        <div class="dream-text">
+          <p><strong>Was uns wirklich bewegt:</strong> Eine Reise, die uns noch näher zu Gott und zueinander bringt. Die <strong>Nordwärts-Kreuzfahrt</strong> ist mehr als ein Urlaub – sie ist ein schwimmendes Zuhause voller <strong>Gemeinschaft, Lobpreis und tiefer Begegnungen</strong>.</p>
+          <div class="dream-highlight">
+            <i>⛪</i> Tägliche Gottesdienste mitten auf dem Meer
+          </div>
+          <div class="dream-highlight">
+            <i>🎶</i> Vielseitiger Worship & inspirierende Musik
+          </div>
+          <p>Spektakuläre Fjorde, norwegische Küstenstädte und vor allem: <strong>Zeit zum Innehalten, Danken und Auftanken</strong> – fernab vom Alltag, umgeben von der atemberaubenden Schönheit der Schöpfung.</p>
+          <p>Wenn ihr diesen Traum ein Stück näherbringen möchtet, würden wir uns sehr über einen kleinen Beitrag freuen. Jeder Franken lässt uns diese unvergesslichen Momente erleben.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 1.2rem; font-size: 0.85rem; color: var(--gold);">
+        ✦ 02. – 11. August 2027 · Mit Gott über die Wellen ✦
+      </div>
     </div>
 
     <div class="verse-box">
